@@ -14,6 +14,7 @@
  * @param {Item[]} items - array of items
  */
 function logNames(items) {
+items.forEach((item) => console.log(item));
   // TODO: use `forEach`
 }
 
@@ -22,7 +23,8 @@ function logNames(items) {
  * @returns {string[]} an array of item names in all uppercase
  */
 function getUppercaseNames(items) {
-  // TODO: use `map`
+  const newArr = items.map((item) => item.name.toUpperCase());
+  return newArr;
 }
 
 /**
@@ -31,8 +33,12 @@ function getUppercaseNames(items) {
  * @returns {Item} - the item in `items` with the given `id`
  */
 function getItemById(items, id) {
+  const found = items.find(item => item.id === id);
+  return found;
+  }
+  
   // TODO: use `find`
-}
+
 
 /**
  * @param {Item[]} items - array of items
@@ -40,7 +46,9 @@ function getItemById(items, id) {
  * @returns {number} the price of the item named `name`
  */
 function getItemPriceByName(items, name) {
-  // TODO: use a loop!
+  let itemObject = items.find(item => item.name === name);
+  return itemObject.price;
+  
 }
 
 /**
@@ -49,6 +57,8 @@ function getItemPriceByName(items, name) {
  * @returns {Item[]} array of items that belong to the given `category`
  */
 function getItemsByCategory(items, category) {
+  const itemArray = items.filter((item) => item.category === category);
+  return itemArray;
   // TODO: use `filter`
 }
 
@@ -57,6 +67,8 @@ function getItemsByCategory(items, category) {
  * @returns {number} the total quantity of all items
  */
 function countItems(items) {
+  const sum = items.reduce((acc, item) => acc + item.quantity, 0);
+  return sum;
   // TODO: use `reduce`
 }
 
@@ -65,6 +77,8 @@ function countItems(items) {
  * @returns {number} the cost of all given items
  */
 function calculateTotalPrice(items) {
+  const totalCost = items.reduce((acc, item) => acc + (item.price * item.quantity), 0);
+  return totalCost;
   // TODO: use `reduce`
 }
 
